@@ -6,14 +6,14 @@
     Le correcteur \textit{PID} est un exemple de système à boucle fermée permettant d'asservir efficacement une grandeur. C'est le correcteur le plus utlisié, qui a largement fait ses preuves dans l'industrie.
     \begin{figure}[h]
         \centering
-        \input{assets/asserv.pgf}
+        %\input{assets/asserv.pgf}
         \caption{Représentation d'un système asservi en boucle fermée}
     \end{figure}
 
 
     \newpage
     \section{Correcteur PID}
-        Le correcteur PID est un système à contre réaction \textbf{négative}, il calcule donc une commande en fonction de l'erreur $\Epsilon$ de la grandeur, c'est à dire la différence entre la valeur voulue (i.e l'objectif) $O$, et valeur mesurée $m$.
+        Le correcteur PID est un système à contre réaction \textbf{négative}, il calcule donc une commande en fonction de l'erreur $\epsilon$ de la grandeur, c'est à dire la différence entre la valeur voulue (i.e l'objectif) $O$, et valeur mesurée $m$.
         \begin{equation}
             \epsilon (t) = O(t) - m(t)
         \end{equation}
@@ -28,7 +28,7 @@
         Ce que l'on peut résumer à l'aide du schéma-bloc suivant:
         \begin{figure}[h]
             \centering
-            \input{assets/PID.pgf}
+            %\input{assets/PID.pgf}
             \caption{Représentation d'un correcteur PID}
         \end{figure}
 
@@ -196,7 +196,7 @@ function motionControl() {
 
         Pour un robot, il peut être intéressant d'asservir sur la position et l'orientation. L'intérêt est de pouvoir facilement envoyer le robot à une une position $(x, y, \theta)$, sans avoir à faire du traitement algorithmique pour déterminer les consignes de position à envoyer à chaque moteur comme dans un asservissement position ou position/vitesse.\\
         On a donc en tout quatre controlleurs PID: deux pour un asservissement position/vitesse sur la vitesse de déplacement du robot, et deux pour un asservissement position/vitesse sur la vitesse angulaire du robot.\\
-        Les grandeurs mesurées ne sont plus directement les impulsions d'encodeur, mais les variations de vitesse et de vitesse angulaire calculées par l'odométrie et décrites par les relations \eqref{drho} et \eqref{dtheta} pour les PID de vitesse, et l'orientation/distance globale pour les PID de distance.
+        Les grandeurs mesurées ne sont plus directement les impulsions d'encodeur, mais les variations de vitesse et de vitesse angulaire calculées par l'odométrie et décrites par les relations dRHO et dTHETA pour les PID de vitesse, et l'orientation/distance globale pour les PID de distance.
 
         \subsubsection{Code d'exemple}
             \begin{lstlisting}[language=JavaScript]
