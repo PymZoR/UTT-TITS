@@ -53,12 +53,12 @@
         \begin{itemize}
             \item $impulsions_{parTour}$ le nombre d’impulsion d’encodeur par tour de roue codeuse.
             \item $impulsions_{codeur}$ le nombre d’impulsion d’un tour d’encodeur originel.
-            \item $impulsions_{réduction}$ le rapport de réduction entre le nombre de tour de roue codeuse et le nombre de tours d’encodeur.\\
+            \item $rapport_{reduction}$ le rapport de réduction entre le nombre de tour de roue codeuse et le nombre de tours d’encodeur.\\
         \end{itemize}
 
         On a la relation suivante :
         \begin{equation}
-            impulsions_{parTour} = C_r \times rapport_{réduction} \times impulsion_{encodeur}
+            impulsions_{parTour} = C_r \times rapport_{reduction} \times impulsion_{encodeur}
         \end{equation}
         Ainsi, pour passer de mètres en impulsions :
         \begin{equation}
@@ -93,9 +93,11 @@
         Au cours de $d\tau$ à l’instant t :
         \begin{equation}
             d\tau = \frac{impulsions_{gauche} + impulsions_{droite}}{2}
+            \label{dTAU}
         \end{equation}
         \begin{equation}
             d\theta = \frac{impulsions_{gauche} - impulsions_{droite}}{entraxe}
+            \label{dTHETA}
         \end{equation}
         Avec entraxe la distance entre le centre des deux roues codeuses.\\
 
