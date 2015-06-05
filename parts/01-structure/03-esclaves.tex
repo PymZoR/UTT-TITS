@@ -12,6 +12,7 @@ Afin de faire communiquer les quatres modules entre eux, nous avons utilisé le 
 
 Nous avons ajouté des fonctionnalités à ce protocole afin d'éviter les erreurs de transmission et pouvoir faire en sorte que si le périphérique a des données disponibles, coeur lui demande de les donners. On a eu certains problèmes avec la communication, entre autre parce que le cablage était défaillant et qu'il suffisait de pas grand chose pour avoir des erreurs.
 
+\newpage
 \section{Ce qu'il faut améliorer}
 \subsection{La modularité}
 Au niveau de la modularité, nous souhaitons pousser le concept plus loin au niveau de l'electronique. Ainsi, nous travaillons déjà avec un microcontrolleur par module, mais nous voudrions avoir réelement une carte complète electronique par module. Par exemple la carte de controle des moteurs embarquera :
@@ -53,7 +54,7 @@ La pince était faite pour acceuillir des éléments cylindrique ou conique et l
 \subsection{Électronique}
 Les controlleurs moteurs que nous avons utilisé pour piloter les moteurs de la pince fonctionnent bien. Cependant la carte que nous avons fait ne prévoyait pas de pouvoir arreter les controlleurs moteurs, ce qui était une assez grosse erreur étant donné que les moteurs et les drivers chauffent constament et par conduction, le chassis en alu devient lui aussi chaud. Nous avons mis des radiateurs sur les drivers, mais ce n'était pas suffisant. Lorsqu'on ne travaillait pas sur la pince, on était obligé de débrancher la carte ce qui est plutot contraignant.
 
-\subsection{Prog}
+\subsection{Programmmation}
 Au début un algorithme permettant de faire des courbe trapezoidal avait été fait, cependant le temps de calcul était trop important pendant les mouvements de la pince et limitais la vitesse ce qui n'était pas négligeable sur l'assenceur qui était déjà trop lent. L'algorithme a donc été simplifié et optimisé. Si le code était à refaire, il faudrait pouvoir détecter à tout moment les interrupteurs de fin de course, pouvoir facilement réactualiser la position à tout moment. Actuellement ils sont utilisé que à l'initialisiation, quand les moteurs se calibrent.
 
 \section{Le module capteur}
@@ -63,9 +64,9 @@ Il s'occupe de vérifier les sonars régulièrement pour voir s'il n'y a pas d'o
 Nous avions quatres sonnars sur le robot :\\
 
 \begin{itemize}
-	\item Un devant en haut en bias
+	\item Un devant en haut en biais
 	\item Un derrière
-	\item deux en bas de chaque coté
+	\item Deux en bas de chaque coté
 \end{itemize}\ \\
 
 Nous nous sommes vite rendu compte qu'il ne faut pas mettre de sonnars en bas du robot car sinon il detecte les éléments de jeu. Nous n'avons donc utilisé que le sonnar en haut du robot car c'était le seul à ne pas les dététecter.
