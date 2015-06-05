@@ -25,6 +25,7 @@
     \graphicspath{{./assets/}}
 
 \usepackage{lipsum}
+\usepackage{floatrow}
 
 % Maths
 \usepackage{amsmath}
@@ -97,16 +98,19 @@
 
 \begin{document}
     \maketitle
-    \include{chapters/00-remerciements}
+    \include{parts/00-remerciements}
     \tableofcontents
 
-    \include{chapters/01-introduction}
-    \include{chapters/02-odometrie}
-    \include{chapters/03-asservissement}
-    \include{chapters/04-conclusion}
+    \include{parts/01-introduction}
+    \include{parts/01-structure/01-general}
+    \include{parts/01-structure/02-coeur}
+    \include{parts/01-structure/03-esclaves}
+    \include{parts/02-algorithme/01-odometrie}
+    \include{parts/02-algorithme/02-asservissement}
+    \include{parts/03-conclusion}
 
     \appendix
-    \include{chapters/06-Annexes}
+    \include{parts/04-Annexes}
 
     \nocite{*}
     \bibliographystyle{plain-fr}

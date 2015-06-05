@@ -168,7 +168,7 @@ function metersToTicks(meters) {
 */
 function compute() {
     let now = Date.now();
-    // On s’assure que les calculs sont fait a intervalles reguliers
+    // On s'assure que les calculs sont fait a intervalles reguliers
     if (now - previousOrientation >= REFRESH_TIME) {
         lastCall = now;
         let leftTicks = leftEncoder.getTicks();
