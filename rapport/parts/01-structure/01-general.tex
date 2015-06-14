@@ -1,5 +1,6 @@
+\part{Structure du projet}
 \chapter{Aspect général}
-Le robot a pour objectif de pouvoir déplacer des objects cylindriques (cylindres en bois, et gobelets en plastique). Pour cela, nous l'avons équipé d'une pince adapté capable de monter et descendre.
+Le robot a pour objectif de pouvoir déplacer des objets cylindriques (cylindres en bois, et gobelets en plastique). Pour cela, nous l'avons équipé d'une pince adaptée capable de monter et descendre.
 
 
 \begin{figure}[h]
@@ -18,7 +19,7 @@ Le robot a pour objectif de pouvoir déplacer des objects cylindriques (cylindre
 
 \newpage
 \section{Modularité}
-Comme le club participe tous les ans à la coupe de France de Robotique, il y a des actions parfois similaire et certaines parties des robots qui pourraient être réutilisés. C'est en partant de ce constat que nous avons conçu une architecture modulaire. Certains modules pouvant être réutilisé et amélioré les années suivantes. \\
+Comme le club participe tous les ans à la coupe de France de Robotique, il y a des actions parfois similaires et certaines parties des robots qui pourraient être réutilisées. C'est en partant de ce constat que nous avons conçu une architecture modulaire. Certains modules pouvant être réutilisés et améliorés les années suivantes. \\
 
 
 Cette année le robot a donc été séparé en 4 modules :
@@ -38,13 +39,13 @@ Cette année le robot a donc été séparé en 4 modules :
 \end{figure}
 
 \section{Programmes et documentation}
-Afin de pouvoir travailler à plusieurs sur les programmes, nous utilisons \textit{Git}. C'est un logiciel qui est fait pour pouvoir fusionner des modifications sur les différents fichiers du projets tout en gardant un historique de toutes les modifications. Pour que ce logiciel fonctionne, il faut qu'il y ait un serveur qui stoque tous les codes sources aisi que l'historique de modification sur Internet.\\
+Afin de pouvoir travailler à plusieurs sur les programmes, nous utilisons \textit{Git}. C'est un logiciel qui est fait pour pouvoir fusionner des modifications sur les différents fichiers du projet tout en gardant un historique de toutes les modifications. Pour que ce logiciel fonctionne, il faut qu'il y ait un serveur qui stocke tous les codes sources ainsi que l'historique de modification sur Internet.\\
 
-Nous utilisons Github.com, qui est l'un des plus utilisé. Nous avons choisis de ne pas mettre notre code source en publique, car nous participons à une competition. Le fait de mettre en privé du code est payant sur Github.com, cependant nous avons fait la demande à Github d'accorder gratuitement des dépots\footnote{dépot: Sorte de dossier ou le code d'un projet y est placé}  privés gratuits en tant qu'association étudiante. Ils ont mis deux mois pour étudier la demande avant de l'accepter.\\
+Nous utilisons Github.com, qui est l'un des plus utilisés. Nous avons choisi de ne pas mettre notre code source en publique, car nous participons à une competition. Le fait de mettre en privé du code est payant sur Github.com, cependant nous avons fait la demande à Github d'accorder gratuitement des dépôts\footnote{dépôt: Sorte de dossier où le code d'un projet y est placé}  privés gratuits en tant qu'association étudiante. Ils ont mis deux mois pour étudier la demande avant de l'accepter.\\
 
 \newpage
 
-Les programmes qui font fonctionner le robots suivent l'architecture modulaire. Nous avons donc créé les dépots suivants :\\
+Les programmes qui font fonctionner le robot suivent l'architecture modulaire. Nous avons donc créé les dépôts suivants :\\
 \begin{itemize}
 	\item \textit{eurobot-core} : Le code du module Coeur
 	\item \textit{eurobot-clampController} : Le code du module Pince
@@ -57,12 +58,12 @@ Les programmes qui font fonctionner le robots suivent l'architecture modulaire. 
 
 Le projet du robot a aussi pour but de poser les bases d'une documentation interne pour le Club de Robotique. Ainsi en fin d'année dernière, nous avons mis en place un Wiki, c'est à dire une documentation où tout le monde peut participer (ici toutes les personnes du club).\\
 
-Que ce soit le wiki ou le code et les fichiers placés sur github, elle resterons et permettrons aux équipes futurs d'avoir des connaissances et des examples sur lesquelles travailler. Ce qui nous avais cruellement manqué lorsque nous avons commencé.
+Que ce soit le wiki ou le code et les fichiers placés sur github, ils resteront et permettront aux équipes futures d'avoir des connaissances et des exemples sur lesquelles travailler. Ce qui nous avait cruellement manqué lorsque nous avions commencé.
 
 \section{Electronique}
-Le robot est alimenté par une batterie Lithium-Polymère de 4 cellulles et de 5000 mAh, ce qui veut dire qu'elle peut sort 14.8V et qu'elle peut délivrer jusqu'à 5A pendant une heure (ou 1A pendant 5 heures). \\
+Le robot est alimenté par une batterie Lithium-Polymère de 4 cellules et de 5000 mAh, ce qui veut dire qu'elle peut sortir 14,8V et qu'elle peut délivrer jusqu'à 5A pendant une heure (ou 1A pendant 5 heures). \\
 
-La batterie est branchée sur la carte de régulation qui permet permet principalement de réguler la tension de la batterie à 5V car la plupart de nos cartes fonctionnent à cette tension. Elle intègre aussi un interrupteur d'allumage général qui coupe la batterie et un bouton d'arret d'urgence qui coupe uniquement les moteurs. Un fusible y est aussi placé pour éviter d'endomager certaines cartes sensibles en cas de court-circuit. \\
+La batterie est branchée sur la carte de régulation qui permet principalement de réguler la tension de la batterie à 5V car la plupart de nos cartes fonctionnent à cette tension. Elle intègre aussi un interrupteur d'allumage général qui coupe la batterie et un bouton d'arrêt d'urgence qui coupe uniquement les moteurs. Un fusible y est aussi placé pour éviter d'endommager certaines cartes sensibles en cas de court-circuit. \\
 
-Le robot dispose aussi d'une carte de conversion de tension 5V à 3,3V. La carte du module Coeur fonctionne en 3,3V alors que le reste du robot fonctionne en 5V. Cette carte permet donc de pouvoir communiquer entre les cartes sans que le module coeur soit endomagé par ine tension de 5V.
+Le robot dispose aussi d'une carte de conversion de tension 5V à 3,3V. La carte du module Coeur fonctionne en 3,3V alors que le reste du robot fonctionne en 5V. Cette carte permet donc de pouvoir communiquer entre les cartes sans que le module coeur soit endommagé par une tension de 5V.
 
