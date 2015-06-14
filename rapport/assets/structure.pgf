@@ -1,0 +1,83 @@
+
+% Define block styles
+\tikzstyle{module} = [draw, text centered,text width=4em, minimum width=4em,
+  minimum height=3.5em,ellipse]
+\tikzstyle{object} = [draw, text centered, minimum width=2em,
+  minimum height=1.5em]
+\tikzstyle{arrow} = [thick, color=black!50, arrows=->, >=latex]
+\tikzstyle{texto} = [above, text width=6em, text centered]
+
+\begin{tikzpicture}[scale=0.675,transform shape]
+
+%Modules
+\node[module](A1) at (0,2){Coeur};
+\node[module](A2) at (3,0){Module Pince};
+\node[module](A3) at (0,-2){Module Capteur};
+\node[module](A4) at (-3,0){Module Moteur};
+
+%Bus I2C
+\draw[arrow, <->] (A1.south) -- (A2.west);
+\draw[arrow, <->] (A2.west) -- (A3.north);
+\draw[arrow, <->] (A3.north) -- (A4.east);
+\draw[arrow, <->] (A4.east) -- (A1.south);
+\node[texto] at (0,-1.5ex){$I^2C$ Bus};
+
+%Enfants de coeur
+\node[object](B1) at (-2,3.5){Écran};
+\node[object](B2) at (0,4.5){Sélection de couleur};
+\node[object](B3) at (2,3.5){Lanceur};
+
+\draw[arrow, ->] (A1.100) -- (B1.east);
+\draw[arrow, <-] (A1.north) -- (B2.south);
+\draw[arrow, <-] (A1.80) -- (B3.west);
+
+%Enfant de moteur
+\node[object, rounded corners](C1) at (-8.5,0.5){Contrôleur moteur à courant continu};
+\node[object, rounded corners](C2) at (-8.5,-0.5){Carte acquisition roues codeuses};
+
+\draw[arrow, ->] (A4.-190) -- (C1.east);
+\draw[arrow, <-] (A4.-170) -- (C2.east);
+
+	%Enfant de Controleur CC
+	\node[object](D1) at (-10.25,2){Moteur gauche};
+	\node[object](D2) at (-6.75,2){Moteur droit};
+	
+	\draw[arrow, ->] (C1.120) -- (D1.south);
+	\draw[arrow, ->] (C1.100) -- (D2.south);
+
+	%Enfant de acquisition roues codeuses
+	\node[object](E1) at (-11,-2){Roue codeuse gauche};
+	\node[object](E2) at (-6.75,-2){Roue codeuse droit};
+	
+	\draw[arrow, <-] (C2.-120) -- (E1.north);
+	\draw[arrow, <-] (C2.-100) -- (E2.north);
+
+
+%Enfants de Cpateur
+\node[object](F1) at (-2.5,-3.25){Sonar 1};
+\node[object](F2) at (-1,-4){Sonar 2};
+\node[object](F3) at (1,-4){Sonar 3};
+\node[object](F4) at (2.5,-3.25){Sonar 4};
+
+\draw[arrow, <-] (A3.-120) -- (F1.east);
+\draw[arrow, <-] (A3.-100) -- (F2.north);
+\draw[arrow, <-] (A3.-80) -- (F3.north);
+\draw[arrow, <-] (A3.-60) -- (F4.west);
+
+%Enfant de pince
+\node[object, rounded corners](G1) at (8,1){Contrôleur moteur pas à pas};
+\node[object](G2) at (8,0){Capteur de fin d'ouverture};
+\node[object](G3) at (8,-1){Capteur de fin d'ascension};
+
+\draw[arrow, ->] (A2.20) -- (G1.west);
+\draw[arrow, <-] (A2.0) -- (G2.west);
+\draw[arrow, <-] (A2.-20) -- (G3.west);
+
+	%Enfant de controleur de moteur pas à pas
+	\node[object](G2) at (6,2.5){Moteur ascenseur};
+	\node[object](G3) at (10,2.5){Moteur pince};
+
+	\draw[arrow, ->] (G1.110) -- (G2.south);
+	\draw[arrow, ->] (G1.70) -- (G3.south);
+
+\end{tikzpicture}

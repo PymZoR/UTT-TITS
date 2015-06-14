@@ -1,0 +1,88 @@
+\chapter{Esclaves}
+
+Les 3 autres modules que Coeur sont dit \textit{esclaves} car ils n'envoient que des infos sommaire qui seront ensuite traité par Coeur.
+
+\section{Specifications materiel}
+Chacun de ces 3 modules dispose d'une Arduino Nano dédié. Ce sont des petits micrcontrolleurs se programmant en C++ et permettant de pouvoir manipuler des entrées et sorties logiques. Le fait d'en avoir trois séparés nous permet d'avoir des codes séparé et donc pouvoir isoler les problèmes et éspérer une réutilisation de certains modules uniquement pour l'année suivante.\\
+
+Afin de simplifier les branchements tout en pouvant facilement changer une Arduino qui aurrait été endommagé, nous avons fait une carte qui sert de support pour les Arduino Nano. Ainsi les arduino se branchent dans la carte comme on branche une prise.
+
+\section{Communication}
+Afin de faire communiquer les quatres modules entre eux, nous avons utilisé le protocol I2C. C'est un bus fonctionnant avec un maître et des esclaves. Le fait que ce soit un bus veut dire qu'avec deux fils de donnée, on peut brancher tous lets modules entre eux et qu'on peut théoriquement en brancher plus d'une centaine sans que ça pose de problèmes. Le maître (ici core), est le seul à pouvoir parler et à demander aux autres de donner des informations. Un slave ne peut pas donner des informations spontanément.\\
+
+Nous avons ajouté des fonctionnalités à ce protocole afin d'éviter les erreurs de transmission et pouvoir faire en sorte que si le périphérique a des données disponibles, coeur lui demande de les donners. On a eu certains problèmes avec la communication, entre autre parce que le cablage était défaillant et qu'il suffisait de pas grand chose pour avoir des erreurs.
+
+\newpage
+\section{Ce qu'il faut améliorer}
+\subsection{La modularité}
+Au niveau de la modularité, nous souhaitons pousser le concept plus loin au niveau de l'electronique. Ainsi, nous travaillons déjà avec un microcontrolleur par module, mais nous voudrions avoir réelement une carte complète electronique par module. Par exemple la carte de controle des moteurs embarquera :
+\begin{itemize}
+	\item Le microcontrolleur programmable (Arduino)
+	\item La puce de control des moteurs
+	\item Le circuit d'aquisition des informations de roues codeuses
+\end{itemize}
+Alors que actuellement nous avons :
+\begin{itemize}
+	\item Une carte rassemblant les trois microcontrolleurs des trois modules
+	\item Une carte contenant la puce de controle des moteurs
+	\item Une carte contenant le circuit d'aquisition des informations de roues codeuses
+\end{itemize}
+
+\subsection{Le microcontrolleur programmable}
+
+
+Pour des raisons de cout, nous souhaitons aussi faire nos propres arduino. Une arduino est principalement composé de 3 parties :
+
+\begin{itemize}
+	\item Un Atmega : C'est la base de l'arduino, celui qui execute le code. Cependant il ne coute que 3 ou 4 euros chez nos forunisseurs.
+	\item Un régulateur de tension 5V : Inutile dans notre cas car nous avons déjà une tension régulé en 5V venant d'une carte de régulation.
+	\item Un \"Convertisseur USB/Serial\" : Il permet de programmer et debugger l'arduino et coute très cher (15euros pour celui de l'arduino Nano). Hors nous n'en avons pas besoin d'un part arduino. De plus quand une arduino est endomagée, on perd ce module qu'on ne peut plus réutiliser pour une autre arduino, même si lui fonctionne bien.
+\end{itemize}
+
+Ainsi, l'année prochain nous fabriquerons nos propres arduino et ne changerons que l'atmega s'il grille. Cela demande un peu plus de travail au niveau electronique mais c'est tout à fait faisable.
+
+Au niveau de la communication, nous avons commencé nos recherches, et avons trouvé le protocole BUS CAN. C'est celui utilisé dans les voitures. Ses spécificications conviennent parfaitement à notre architecture. Le seul problème étant que ni l'arduino ni la Raspberry Pi ne le gère nativement. Cependant, il existe une puce permettant d'interfacer avec un bus CAN via spi, nous avons acheté des composants pour tester et nous ferons un prototype cet été pour voir si cette solution est viable.
+
+\section{Le module pince}
+Il s'occupe de gérer l'élévation de la pince et la fermeture de cette dernière.
+
+\subsection{Mécanique}
+La pince était actionné par deux moteurs pas à pas et avait deux interrupteurs de fin de courses afin d'initialiser les moteurs. La fermeture de la pince se passait bien. Par contre l'ascensseur de la pince était bien trop lent (Au début 30s pour monter). Nous avons ajouter un réducteur qui permet d'augmenter la vitesse par 5. Pour des raison ce rapidité de fabriquation (ou de livraison), nous l'avons imprimé avec une imprimante 3D et il fonctionne comme escompté;.
+
+La pince était faite pour acceuillir des éléments cylindrique ou conique et les empiler ce qui a plutot bien marché. Il fallait juste mettre des elastics pour ajouter de l'adhérence.
+
+\subsection{Électronique}
+Les controlleurs moteurs que nous avons utilisé pour piloter les moteurs de la pince fonctionnent bien. Cependant la carte que nous avons fait ne prévoyait pas de pouvoir arreter les controlleurs moteurs, ce qui était une assez grosse erreur étant donné que les moteurs et les drivers chauffent constament et par conduction, le chassis en alu devient lui aussi chaud. Nous avons mis des radiateurs sur les drivers, mais ce n'était pas suffisant. Lorsqu'on ne travaillait pas sur la pince, on était obligé de débrancher la carte ce qui est plutot contraignant.
+
+\subsection{Programmmation}
+Au début un algorithme permettant de faire des courbe trapezoidal avait été fait, cependant le temps de calcul était trop important pendant les mouvements de la pince et limitais la vitesse ce qui n'était pas négligeable sur l'assenceur qui était déjà trop lent. L'algorithme a donc été simplifié et optimisé. Si le code était à refaire, il faudrait pouvoir détecter à tout moment les interrupteurs de fin de course, pouvoir facilement réactualiser la position à tout moment. Actuellement ils sont utilisé que à l'initialisiation, quand les moteurs se calibrent.
+
+\section{Le module capteur}
+Il s'occupe de vérifier les sonars régulièrement pour voir s'il n'y a pas d'obstacle et s'il y a un obstacle, il prévient \textit{Core}.
+
+\subsection{Positionnement des sonnars}
+Nous avions quatres sonnars sur le robot :\\
+
+\begin{itemize}
+	\item Un devant en haut en biais
+	\item Un derrière
+	\item Deux en bas de chaque coté
+\end{itemize}\ \\
+
+Nous nous sommes vite rendu compte qu'il ne faut pas mettre de sonnars en bas du robot car sinon il detecte les éléments de jeu. Nous n'avons donc utilisé que le sonnar en haut du robot car c'était le seul à ne pas les dététecter.
+
+
+\section{MotorController} 
+Ce module s'occupe de controller les déplacement et le positionnement du robot sur la table de jeu. Il utilise pour cela deux moteurs et deux roues codeuses. Ce module sera encore utilisé les années suivantes car nous avons besoin tous les ans d'un positionnement sur la table.
+
+\subsection{Mécanique}
+Afin d'avoir des roues codeuses séparés des moteurs, nous avons du réduire la place que prenait les moteurs. Le seul moyen en conservant ces moteurs était d'utiliser des renvoi d'angles. Or avec les imperfections de réglage et d'usure; cela a créé des contraintes irrégulières sur le moteur ce qui les empéchait de tourner de façon régulière. En effet si on fixe le moteur et le renvoi d'angle sur le chassis et si l'arbre moteur est un peu tordu, il forcera à certains moment de la rotation. Cela a été l'un de nos plus gros problèmes pour asservir ces moteurs. Il est très difficile d'asservir le robot si les moteurs tournent de façon irrégulière.\\
+
+Pour faciliter la rotation des moteurs, nous avons enlevé l'une des fixations : celle qui supportait l'axe de rotation des roues et donc l'arbre de sortie du renvoi d'angle. L'équipe mécanique a ensuite mis en place une bille folle à l'arrière du robot pour soullager les renvois d'angles. Cependant cela a été mis en place trop tard et à la coupe, ce qui a cassé, c'est le renvoi d'angle qui était bien trop affaiblis. \\
+
+Il faut simplifier la chaine de transmission l'année prochaine afin d'éviter ce genre de problèmes. 
+
+\subsection{Avenir}
+Cette année nous travaillons avec des moteurs à courrant continue. Pour des raisons de place, nous souhaitons travailler l'année prochaine avec des moteurs brushless. Nous en avons retrouvé deux dans les armoirs de Robotik et nous allons faire des tests cet été pour voir si on peut les controller comme on le souhaite avec les driver que nous a conseillé l'équipe de l'UTC.\\
+
+Néanmoins le code et les connaissances ne sont pas perdus. C'est la partie du projet où nous avons investit le plus de temps, et c'est pourquoi nous avons choisis de developper plus en détail les algorithmes permettant de positionner le robot sur le plateau de jeu.

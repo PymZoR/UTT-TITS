@@ -1,0 +1,45 @@
+\chapter{Suivi du projet}
+    \begin{tabular}{|p{3cm}|c|p{10cm}|}
+        \hline
+        Personnes présentes & Date & Objet et synthèse\\
+        \hline
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 18/03/15 & Délimitation du sujet de TITS\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 25/03/15 & Début du développement de l'interface de débug\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 1/04/15 & Recherches documentaires sur Odométrie, Asservissement\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 8/04/15 & Suite des recherches documentaires, premières discussions sur les solutions trouvées. Premier jet des cartes électroniques.\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 15/04/15 & Fin des recherches. Développement des outils de simulation d'asservissement.\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 22/04/15 & Développement du traceur de courbes pour pouvoir interpréter les réponses moteur. Impression des cartes électroniques. Assemblage sur la mécanique et premiers tests d'asservissements polaire\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 6/05/15 & Mise au point, harmonistation des différents modules et préparation du départ à la coupe de France.\\
+        \hline
+        \textbf{Annulé} & 13/05/15 & \textbf{Coupe de France de robotique}\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 20/05/15 & Commande des pièces mécaniques nécessaire à la réparation du robot.\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 27/05/15 & Préparation de la démonstration pour la soutenance.\\
+        \hline
+        Aurélien Labate, Axel Mousset, Alexandre Vial & 3/06/15 & Synthèse du travail fait pour réduire la taille du rapport.\\
+        \hline
+     \end{tabular}
+
+
+\newpage
+\chapter{Memento sur les influences des coefficients PID}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Coefficient& Temps de montée& Temps de stabilisation& Dépassement& Erreur statique\\
+        \hline
+        \hline
+        $K_p$ & Diminue & Augemente & Augemente & Diminue \\
+        \hline
+        $K_i$ & Diminue & Augemente & Augemente & Annule \\
+        \hline
+        $K_d$ & - & Diminue & Diminue & - \\
+        \hline
+     \end{tabular}
