@@ -1,0 +1,189 @@
+\documentclass[t]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{tikz,pgf}
+\usepackage{wrapfig}
+\usepackage{times}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{url}
+% \usepackage[texcoord,grid,gridunit=mm,gridcolor=red!10,subgridcolor=green!10]{eso-pic}
+
+\definecolor{bleu}{rgb}{0.282, 0.439, 0.643}
+
+\usecolortheme[named=bleu]{structure}
+\useinnertheme[shadow]{rounded}
+
+\hypersetup{pdfpagemode=FullScreen}
+
+\setbeamersize{text margin left=0.6cm}
+\setbeamersize{text margin right=0.4cm}
+\setbeamersize{text margin left=.5cm, text margin right=.5cm}
+\setbeamertemplate{navigation symbols}{}
+
+\AtBeginSection[]{
+    \begin{frame}
+  	 \frametitle{\vspace*{-1cm} \begin{flushright} \ \ \vskip-0.25cm \end{flushright} }
+        \vspace*{-0.75cm}
+	    \begin{center}
+            \centering
+            \tableofcontents[currentsection]
+	    \end{center}
+    \end{frame}
+}
+
+\begin{document}
+    \begin{frame}
+        \pgfputat{\pgfxy(-0.505,0.685)}{\pgfbox[left,top]{\pgfimage[width=\paperwidth,height=\paperheight ]{./assets/UTT_garde_empty.pdf}}}
+        \vspace*{2.5cm}
+
+        \begin{center}
+            \textcolor{white}{
+                {\large Soutenance de TITS} \\
+                {\footnotesize   Printemps 2015}\\
+            \vspace*{0.5cm}
+                {\footnotesize \textbf{Développement d'un robot autonome}}\\
+            \vspace*{0.25cm}
+                {\footnotesize Mousset Axel\\ Labate Aurélien}\\
+          }
+        \end{center}
+    \end{frame}
+
+\setbeamertemplate{background canvas}{
+    \includegraphics[width=\paperwidth,height=\paperheight]{./assets/UTT_fond.pdf}}
+    \addtobeamertemplate{footline}{
+    \vspace{-0.5cm}
+    \begin{flushright}
+    \insertframenumber/\inserttotalframenumber
+    \end{flushright}
+}
+
+
+\section{Introduction}
+    \begin{frame}[c]
+        \begin{center}
+            \frametitle{\vspace*{-1.0cm} \begin{flushright} Introduction \ \ \vskip-0.25cm \end{flushright} }
+            \vspace*{-0.75cm}
+            \begin{itemize}
+                \item Développement d'un robot autonome pour la coupe de France
+                \item Classement: 54èmes sur plus de 180 équipes
+                \item Casse mécanique du robot principal !
+                \item Objectif: proposer des bases théoriques, algorithmiques et logicielles solides pour les années suivantes
+            \end{itemize}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}[c]
+        \frametitle{\vspace*{-1.0cm} \begin{flushright} Introduction \ \ \vskip-0.25cm \end{flushright} }
+        La robotique est une discipline complexe, elle allie:
+        \begin{center}
+            \begin{itemize}
+                \item Informatique
+                \item Électronique
+                \item Mécanique
+                \item Sciences physiques, algorithmique..
+            \end{itemize}
+        \end{center}
+        Dans cette présentation, on parlera d'\textbf{informatique} et de \textbf{réseau}.
+    \end{frame}
+
+
+\section{Architecture modulaire}
+    \begin{frame}[c]
+        \frametitle{\vspace*{-1.0cm} \begin{flushright} Architecture modulaire \ \ \vskip-0.25cm \end{flushright} }
+        \vspace*{-0.75cm}
+    \end{frame}
+
+
+\section{Technologies de communication}
+        \begin{frame}[c]
+            \frametitle{\vspace*{-1.0cm} \begin{flushright} Technologies de communication \ \ \vskip-0.25cm \end{flushright} }
+            \vspace*{0.5cm}
+             \begin{textblock*}{1cm}(4cm,3cm)
+                \textbf{UART}
+            \end{textblock*}
+            \begin{center}
+                \begin{itemize}
+                    \item Liaison full-duplex
+                    \item Niveau logique: TTL
+                    \item Connexion asynchrone
+                    \item CRC basique: bit de parité
+                    \item Débit (baudrate) variable
+                    \item \textbf{Une interface par périphériques, et autant de fils}
+                \end{itemize}
+            \end{center}
+        \end{frame}
+
+        \begin{frame}[c]
+            \frametitle{\vspace*{-1.0cm} \begin{flushright} Technologies de communication \ \ \vskip-0.25cm \end{flushright} }
+            \vspace*{0.5cm}
+             \begin{textblock*}{1cm}(4cm,3cm)
+                \textbf{SPI}
+            \end{textblock*}
+            \begin{center}
+                \begin{itemize}
+                    \item Liaison full-duplex
+                    \item Niveau logique: TTL
+                    \item Connexion asynchrone
+                    \item CRC basique: bit de parité
+                    \item Débit (baudrate) variable
+                    \item \textbf{Une interface par périphériques, et autant de fils}
+                \end{itemize}
+            \end{center}
+        \end{frame}
+
+        \begin{frame}[c]
+            \frametitle{\vspace*{-1.0cm} \begin{flushright} Technologies de communication \ \ \vskip-0.25cm \end{flushright} }
+            \vspace*{0.5cm}
+             \begin{textblock*}{1cm}(4cm,3cm)
+                \textbf{CAN}
+            \end{textblock*}
+            \begin{center}
+                \begin{itemize}
+                    \item Liaison full-duplex
+                    \item Niveau logique: TTL
+                    \item Connexion asynchrone
+                    \item CRC basique: bit de parité
+                    \item Débit (baudrate) variable
+                    \item \textbf{Une interface par périphériques, et autant de fils}
+                \end{itemize}
+            \end{center}
+        \end{frame}
+
+        \begin{frame}[c]
+            \frametitle{\vspace*{-1.0cm} \begin{flushright} Technologies de communication \ \ \vskip-0.25cm \end{flushright} }
+            \vspace*{0.5cm}
+             \begin{textblock*}{1cm}(4cm,3cm)
+                \textbf{I2C}
+            \end{textblock*}
+            \begin{center}
+                \begin{itemize}
+                    \item Liaison full-duplex
+                    \item Niveau logique: TTL
+                    \item Connexion asynchrone
+                    \item CRC basique: bit de parité
+                    \item Débit (baudrate) variable
+                    \item \textbf{Une interface par périphériques, et autant de fils}
+                \end{itemize}
+            \end{center}
+        \end{frame}
+
+
+
+\section{Conclusion}
+    \begin{frame}[c]
+        \frametitle{\vspace*{-1.0cm} \begin{flushright} Conclusion \ \ \vskip-0.25cm \end{flushright} }
+        \vspace*{-0.75cm}
+    \end{frame}
+
+\section{Démonstration}
+    \begin{frame}[c]
+        \frametitle{\vspace*{-1.0cm} \begin{flushright} Démonstration \ \ \vskip-0.25cm \end{flushright} }
+        \vspace*{-0.75cm}
+        \begin{center}
+            \href{./assets/demo.mp4}{Vidéo}
+        \end{center}
+    \end{frame}
+
+
+
+\end{document}
