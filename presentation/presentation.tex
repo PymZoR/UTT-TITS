@@ -165,11 +165,44 @@
                     \item Débit faible, jusqu'à 400Kb/s
                     \item Jusqu'à une centaine de périphériques, système d'adressage
                     \item Un bus de donnée sur un fil
+                    \item Aquittement des données
                 \end{itemize}
             \end{center}
         \end{frame}
 
+        \begin{frame}[c]
+            \frametitle{\vspace*{-1.0cm} \begin{flushright} Technologies de communication \ \ \vskip-0.25cm \end{flushright} }
+            \vspace*{0.5cm}
+             \begin{textblock*}{1cm}(4cm,3cm)
+            \end{textblock*}
+            Technologie choisie: I2C.\\
+            Problèmes:
+            \begin{center}
+                \begin{itemize}
+                    \item Intégrité des données
+                    \item Architecture master/slave
+                    \item Librairies Javascript peu abouties
+                \end{itemize}
+            \end{center}
 
+
+        \begin{frame}[c]
+            \frametitle{\vspace*{-1.0cm} \begin{flushright} Technologies de communication \ \ \vskip-0.25cm \end{flushright} }
+            \vspace*{0.5cm}
+            \begin{textblock*}{1cm}(4cm,3cm)
+             Construction d'une surcouche du protocole
+            \end{textblock*}
+            Le principal but est d'avoir un retour sur erreur.
+            \begin{center}
+                \begin{itemize}
+                    \item Taille du packet annoncée
+                    \item Numéro de packet "Fonction"
+                    \item Données "Arguments"
+                    \item CRC: XORSum
+                \end{itemize}
+                INSÉRER UNE TABLEA-TRAME ICI
+            \end{center}
+        \end{frame}
 
 \section{Conclusion}
     \begin{frame}[c]
