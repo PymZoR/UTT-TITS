@@ -107,8 +107,8 @@
                     \item Niveau logique: TTL
                     \item Connexion asynchrone
                     \item CRC basique: bit de parité
-                    \item Débit (baudrate) variable
-                    \item \textbf{Une interface par périphériques, et autant de fils}
+                    \item Débit (baudrate) variable, maximum 3,6GBauds théoriques
+                    \item 2 fils par pair de périphérique
                 \end{itemize}
             \end{center}
         \end{frame}
@@ -122,11 +122,11 @@
             \begin{center}
                 \begin{itemize}
                     \item Liaison full-duplex
-                    \item Niveau logique: TTL
-                    \item Connexion asynchrone
-                    \item CRC basique: bit de parité
-                    \item Débit (baudrate) variable
-                    \item \textbf{Une interface par périphériques, et autant de fils}
+                    \item Bus de donnée, relation master/slave
+                    \item Connexion synchrone: le master donne la clock
+                    \item Bus de donnée de deux fil, et un fil d'addressage par esclave
+                    \item Débit élevé pour un bus, jusqu'à 20Mb/s
+                    \item Protocle simple, pas d'adressage/gestion d'erreur
                 \end{itemize}
             \end{center}
         \end{frame}
@@ -139,12 +139,14 @@
             \end{textblock*}
             \begin{center}
                 \begin{itemize}
-                    \item Liaison full-duplex
-                    \item Niveau logique: TTL
+                    \item Liaison half-duplex
+                    \item Bus de donnée, relation multi-master
                     \item Connexion asynchrone
-                    \item CRC basique: bit de parité
-                    \item Débit (baudrate) variable
-                    \item \textbf{Une interface par périphériques, et autant de fils}
+                    \item Detection et retour sur erreur physique
+                    \item Débit moyen pour un bus, jusqu'à 1Mb/s
+                    \item Fonctionnement "événementiel"
+                    \item Jusqu'à 30 périphériques, système d'adressage
+                    \item Très résistant aux perturbations
                 \end{itemize}
             \end{center}
         \end{frame}
@@ -157,12 +159,12 @@
             \end{textblock*}
             \begin{center}
                 \begin{itemize}
-                    \item Liaison full-duplex
-                    \item Niveau logique: TTL
-                    \item Connexion asynchrone
-                    \item CRC basique: bit de parité
-                    \item Débit (baudrate) variable
-                    \item \textbf{Une interface par périphériques, et autant de fils}
+                    \item Liaison half-duplex
+                    \item Bus de donnée, relation master/slave ou multi-master
+                    \item Connexion synchrone: un fil commun de clock
+                    \item Débit faible, jusqu'à 400Kb/s
+                    \item Jusqu'à une centaine de périphériques, système d'adressage
+                    \item Un bus de donnée sur un fil
                 \end{itemize}
             \end{center}
         \end{frame}
