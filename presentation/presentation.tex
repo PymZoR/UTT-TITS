@@ -90,10 +90,79 @@
 \section{Architecture modulaire}
     \begin{frame}[c]
         \frametitle{\vspace*{-1.0cm} \begin{flushright} Architecture modulaire \ \ \vskip-0.25cm \end{flushright} }
-        \vspace*{-0.75cm}
+        \vspace*{1.5cm}
+        \begin{center}
+            \textbf{Une architecture modulaire ?}
+        \end{center}
+        Inconveniants
+        \begin{center}
+            \begin{itemize}
+                \item Plus cher
+                \item Plus volumineux
+                \item Plus de cables
+            \end{itemize}
+        \end{center}
+        Avantages
+        \begin{center}
+            \begin{itemize}
+                \item Réutilisable
+                \item Facilité de séparation des tâches
+                \item Changement facile de chaques modules
+                \item Moins de problèmes en cas d'erreurs
+            \end{itemize}
+        \end{center}
     \end{frame}
+    \begin{frame}[c]
+        \frametitle{\vspace*{-1.0cm} \begin{flushright} Architecture modulaire \ \ \vskip-0.25cm \end{flushright} }
+        \vspace*{1.5cm}
+        \begin{center}
+            \textbf{Le coeur}
+        \end{center}
+        \begin{center}
+            \begin{itemize}
+                \item Commande tous les autres modules
+                \item Plus de puissance de calcul
+                \item Language plus haut niveau
+                \item \href{http://bot:8080/}{Interface de contrôle}
+            \end{itemize}
+        \end{center}
 
-
+        Les autres modules :
+        \begin{center}
+            \begin{itemize}
+                \item Moteur
+                \item Pince
+                \item Capteurs
+            \end{itemize}
+        \end{center}
+    \end{frame}
+    \begin{frame}[c]
+        \frametitle{\vspace*{-1.0cm} \begin{flushright} Architecture modulaire \ \ \vskip-0.25cm \end{flushright} }
+        \vspace*{1.5cm}
+        \begin{center}
+            \textbf{Module moteur}
+        \end{center}
+        \begin{center}
+            \begin{itemize}
+                \item Récupère les informations des roues codeuses
+                \item Commande et asservis les moteurs
+                \item Calcul la position et la trajectoire
+            \end{itemize}
+        \end{center}
+    \end{frame}
+    \begin{frame}[c]
+        \frametitle{\vspace*{-1.0cm} \begin{flushright} Architecture modulaire \ \ \vskip-0.25cm \end{flushright} }
+        \vspace*{1.5cm}
+        \begin{center}
+            \textbf{Module pince}
+        \end{center}
+        \begin{center}
+            \begin{itemize}
+                \item Génère les impulsions à fréquence optimale pour controller les moteurs
+                \item Initialise la position des moteurs pas à pas
+            \end{itemize}
+        \end{center}
+    \end{frame}
 \section{Technologies de communication}
         \begin{frame}[c]
             \frametitle{\vspace*{-1.0cm} \begin{flushright} Technologies de communication \ \ \vskip-0.25cm \end{flushright} }
@@ -173,6 +242,19 @@
     \begin{frame}[c]
         \frametitle{\vspace*{-1.0cm} \begin{flushright} Conclusion \ \ \vskip-0.25cm \end{flushright} }
         \vspace*{-0.75cm}
+        \begin{itemize}
+            \item Travail important sur les parties réutilisables
+            \item Une documentation interne au club
+            \item Le travail continu :
+            \begin{itemize}
+                \item Le bus can
+                \item La modularité jusqu'au physique
+                \item Des Arduino faites maison
+                \item Moteur brushless
+            \end{itemize}
+            \item Un robot que nous pour les prochains évènements
+        \end{itemize}
+
     \end{frame}
 
 \section{Démonstration}
